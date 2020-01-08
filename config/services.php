@@ -42,8 +42,8 @@ return [
     'paysera' => [
         'projectid' => env('PAYSERA_ID'),
         'password' => env('PAYSERA_PASS'),
-        'accepturl' => 'http://nuotykiuzeme.lt/uzsakymas-pavyko',
-        'cancelurl' => 'https://nuotykiuzeme.lt/uzsakymas-nepavyko',
+        'accepturl' => 'http://bapserveris.lt/uzsakymas-pavyko',
+        'cancelurl' => 'http://bapserveris.lt/uzsakymas-nepavyko',
         'version' => '1.6',
         'test' => env('PAYSERA_TEST'),
     ],

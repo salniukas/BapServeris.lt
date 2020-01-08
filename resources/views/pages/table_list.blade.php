@@ -15,29 +15,20 @@
               <table class="table">
                 <thead class=" text-primary">
                   <th>
-                    
-                  </th>
-                  <th>
-                    Vardas
+                    Avataras
                   </th>
                   <th>
                     Minecraft vartotojo vardas
                   </th>
                   <th>
-                    Discord
-                  </th>
-                  <th>
-                    Amžius
+                    Veiksmai
                   </th>
                 </thead>
                 <tbody>
                 @foreach($players as $player)
                   <tr>
                     <td>
-                      <img src="https://minotar.net/avatar/{{ $player->username }}/16">
-                    </td>
-                    <td>
-                      {{ $player->name }}
+                      <img src="https://minotar.net/avatar/{{ $player->username }}/24">
                     </td>
                     @if($player->donator === 1)
                     <td class="text-primary">
@@ -49,15 +40,14 @@
                     </td>
                     @endif
                     <td>
-                      {{ $player->discord }}
-                    </td>
-                    <td>
-                      {{ $player->age }}
+                      Dovanoti Paslaugą(kuriama)
                     </td>
                   </tr>
                   @endforeach
+                  {{ $players->links() }}
                 </tbody>
               </table>
+              {{ $players->links() }}
             </div>
           </div>
         </div>

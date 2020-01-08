@@ -7,48 +7,16 @@
   -->
   <div class="logo">
     <a href="#" class="simple-text logo-normal">
-      {{ __('Nuotykių Žemė') }}
+      {{ __('BAP Serveris') }}
     </a>
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
       <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('home') }}">
-          <i class="material-icons">Pagrindinis</i>
-            <p>{{ __('Dashboard') }}</p>
+          <i class="material-icons">dashboard</i>
+            <p>{{ __('Pagrindinis') }}</p>
         </a>
-      </li>
-      <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-        <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
-          <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
-          <p>{{ __('Anketos') }}
-            <b class="caret"></b>
-          </p>
-        </a>
-        @if(Auth::user()->isAdmin || Auth::user()->isSupport || Auth::user()->isAleradas)
-        <div class="collapse show" id="laravelExample">
-          <ul class="nav">
-            <li class="nav-item{{ $activePage == 'Anketos' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('Anketos') }}">
-                <span class="sidebar-mini"> A </span>
-                <span class="sidebar-normal">{{ __('Anketos') }} </span>
-              </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'Atmestos Anketos' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('Atmestos-Anketos') }}">
-                <span class="sidebar-mini"> AA </span>
-                <span class="sidebar-normal"> {{ __('Atmestos Anketos') }} </span>
-              </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'Patvirtintos Anketos' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('patvirtintos-anketos') }}">
-                <span class="sidebar-mini"> PA </span>
-                <span class="sidebar-normal">{{ __('Patvirtintos Anketos') }} </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        @endif
       </li>
       <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('table') }}">
@@ -56,13 +24,50 @@
             <p>{{ __('Žaidėjų Sąrašas') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'Atranka' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('Atranka') }}">
-          <i class="material-icons">library_books</i>
-            <p>{{ __('Pildyti Anketą') }}</p>
+      @if(Auth::user()->isAdmin || Auth::user()->isSupport)
+      <li class="nav-item {{ ($activePage == 'Užsakymai' || $activePage == 'VUžsakymai') ? ' active' : '' }}">
+        <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
+          <i class="material-icons">card_membership</i>
+          <p>{{ __('Užsakymai') }}
+            <b class="caret"></b>
+          </p>
         </a>
+        <div class="collapse show" id="laravelExample">
+          <ul class="nav">
+            <li class="nav-item{{ $activePage == 'VUžsakymai' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('orders') }}">
+                <span class="sidebar-normal">{{ __('Visi Užsakymai') }} </span>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'UUžsakymai' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('orders-done') }}">
+                <span class="sidebar-mini"></span>
+                <span class="sidebar-normal"> {{ __('Užbaigti Užsakymai') }} </span>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'AUžsakymai' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('orders-deny') }}">
+                <span class="sidebar-mini"></span>
+                <span class="sidebar-normal">{{ __('Atmesti užsakymai') }} </span>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'Paslaugos-Kurimas' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('service-create') }}">
+                <span class="sidebar-mini"></span>
+                <span class="sidebar-normal">{{ __('Paslaugos Kurimas') }} </span>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'Paslaugos' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('service-list') }}">
+                <span class="sidebar-mini"></span>
+                <span class="sidebar-normal">{{ __('Paslaugų Sąrašas') }} </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        @endif
       </li>
-       <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
+      <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('icons') }}">
           <i class="material-icons">bubble_chart</i>
           <p>{{ __('Paslaugos') }}</p>

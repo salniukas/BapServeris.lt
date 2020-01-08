@@ -12,70 +12,30 @@ Route::get('/private', function () {
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-//Aleradas
-
-Route::get('zaidejai', 'PlayerAddController@players')->name('zaidejai');
-Route::get('video', 'VideoController@index')->name('video');
-Route::get('donate', 'PaymentController@index')->name('donate');
-
-//Anketos
-
-Route::get('atranka', 'FormsController@create')->name('Atranka');
-Route::post('anketele/store', 'FormsController@store')->name('atrankaS');
-
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('manoanketos', 'FormsController@Mano')->name('ManoAnketos');
-	Route::get('atranka/pildyti', 'FormsController@create')->name('pildyti');
-	Route::get('manoanketos/{id}', 'FormsController@Manoa')->name('ManoAnketa');
 
-	Route::get('anketos', 'HomeController@Anketos')->name('Anketos');
-	Route::get('anketos/atmestos', 'HomeController@Atmestos')->name('Atmestos-Anketos');
-	Route::get('anketos/patvirtintos', 'HomeController@Patvirtintos')->name('patvirtintos-anketos');
+	Route::get('/home', 'HomeController@index')->name('home');
 
-	Route::get('anketos/email', 'FormsController@response')->name('anketosMail');
+	Route::get('parama', 'PayseraGatewayController@Start')->name('icons');
 
-	Route::get('atranka/trash/{id}', 'FormsController@trash');
-	Route::get('atranka/approve/{id}', 'FormsController@etapas');
-	Route::get('atranka/aleradas/{id}', 'FormsController@alerade');
+	Route::post('/home/store', 'HomeController@finish')->name('homeReg');
 
-	Route::get('anketos/vote/{id}', 'FormsController@vote');
-	Route::get('anketos/vote2/{id}', 'FormsController@vote2');
-	Route::get('anketos/show/{id}', 'HomeController@Show')->name('show-anketa');
-
-});
-
-//Video & Žaidėjai
-Route::group(['middleware' => 'auth'], function () {
-	//prideti
-
-	Route::get('zaidejai/add', 'PlayerAddController@register')->name('addzaidejai');
-	Route::post('zaidejai/store', 'PlayerAddController@store')->name('storez');
-	Route::get('zaidejai/edit', 'PlayerAddController@edit');
-	Route::post('zaidejai/update', 'PlayerAddController@update')->name('Zupdate');
-	//parodyti
-
-	Route::get('zaidejas/show/{id}', 'PlayerAddController@show')->name('zaidejas');
-	//moderuoti
-
-	Route::get('zaidejas/suspend/{id}', 'PlayerAddController@suspenduoti')->name('suspenduoti');
-	Route::get('zaidejas/unsuspend/{id}', 'PlayerAddController@atspenduoti')->name('atspenduoti');
-	Route::get('zaidejas/add/all', 'PlayerAddController@addAll')->name('addAll');
-	Route::get('zaidejas/remove/all', 'PlayerAddController@removeAll')->name('removeAll');
-	Route::get('zaidejas/add/penality/{id}', 'PlayerAddController@penality')->name('penalityAdd');
-	Route::get('zaidejas/penality/check', 'PlayerAddController@CheckSuspension');
-	
-	//video
-	Route::get('video/add', 'VideoController@create')->name('videoAdd');
-	Route::post('video/store', 'VideoController@store')->name('videoStore');
+	Route::get('orders', 'HomeController@orders')->name('orders');
+	Route::get('orders/approved', 'HomeController@ordersA')->name('orders-done');
+	Route::get('orders/denied', 'HomeController@ordersDe')->name('orders-deny');
+	Route::get('service/create', 'HomeController@paslaugaC')->name('service-create');
+	Route::post('service/store', 'HomeController@paslaugaS')->name('service-store');
+	Route::get('service/list', 'HomeController@paslaugos')->name('service-list');
+	Route::get('service/delete/{id}', 'HomeController@paslaugosD')->name('service-delete');
+	Route::get('service/edit/{id}', 'HomeController@paslaugosE')->name('service-edit');
+	Route::post('service/edit/update', 'HomeController@paslaugosES')->name('service-update');
 
 });
 
 //Donations
-Route::get('donate/select', 'OrderController@donate')->name('dselect');
 Route::post('/paysera/redirect', 'PayseraGatewayController@redirect')->name('paysera-redirect');
 Route::get('/paysera/callback', 'PayseraGatewayController@callback')->name('paysera-callback');
+Route::get('/paysera/sms', 'PayseraGatewayController@callback2')->name('paysera-callback2');
 Route::get('/uzsakymas-pavyko', function () { return view('donate.accept'); });
 Route::get('/uzsakymas-nepavyko', function () { return view('donate.cancel'); });
 
@@ -86,10 +46,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('typography', function () {
 		return view('pages.typography');
 	})->name('typography');
-
-	Route::get('icons', function () {
-		return view('pages.icons');
-	})->name('icons');
 
 	Route::get('map', function () {
 		return view('pages.map');
