@@ -4,9 +4,8 @@
 Route::get('/oauth/discord', 'Auth\LoginController@redirectToProvider')->name('auth.discord');
 Route::get('/oauth/discord/callback', 'Auth\LoginController@handleProviderCallback')->name('auth.discord.callback');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PublicController@index')->name('index');
+
 Route::get('/private', function () {
     return view('privacy');
 });
@@ -14,7 +13,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
 
-	Route::get('/home', 'HomeController@index')->name('home');
+	Route::get('home', 'HomeController@index')->name('home');
 
 	Route::get('parama', 'PayseraGatewayController@Start')->name('icons');
 
@@ -23,6 +22,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('orders', 'HomeController@orders')->name('orders');
 	Route::get('orders/approved', 'HomeController@ordersA')->name('orders-done');
 	Route::get('orders/denied', 'HomeController@ordersDe')->name('orders-deny');
+
+
 	Route::get('service/create', 'HomeController@paslaugaC')->name('service-create');
 	Route::post('service/store', 'HomeController@paslaugaS')->name('service-store');
 	Route::get('service/list', 'HomeController@paslaugos')->name('service-list');
@@ -30,7 +31,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('service/edit/{id}', 'HomeController@paslaugosE')->name('service-edit');
 	Route::post('service/edit/update', 'HomeController@paslaugosES')->name('service-update');
 
+	
+	Route::get('blog/create', function(){
+		return view('pages.blogc');
+	})->name('blog-create');
+	Route::post('blog/save', 'HomeController@BlogS')->name('blog-store');
+	Route::get('/Bloglist', 'HomeController@Bloglist')->name('blog-list');
+
 });
+
 
 //Donations
 Route::post('/paysera/redirect', 'PayseraGatewayController@redirect')->name('paysera-redirect');
@@ -38,10 +47,9 @@ Route::get('/paysera/callback', 'PayseraGatewayController@callback')->name('pays
 Route::get('/paysera/sms', 'PayseraGatewayController@callback2')->name('paysera-callback2');
 Route::get('/uzsakymas-pavyko', function () { return view('donate.accept'); });
 Route::get('/uzsakymas-nepavyko', function () { return view('donate.cancel'); });
-
+Route::get('table-list', 'PubController@players')->name('table');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('table-list', 'HomeController@players')->name('table');
 
 	Route::get('typography', function () {
 		return view('pages.typography');

@@ -10,6 +10,6 @@ const req = (url, callback) => {
 req("https://api.mcsrvstat.us/2/mc.bapserveris.lt", (res) => {
     let text = JSON.parse(res.responseText);
     console.log(text);
-    document.querySelector('.main .rectangle .n .r_fir').innerHTML = `${text.players.online}/`;
-    document.querySelector('.main .rectangle .n .r_sec').innerHTML = `${text.players.max}`;
+    document.getElementById('r_fir').innerHTML = `${text.players.online}/`;
+    document.getElementById('r_sec').innerHTML = `${text.players.max}`;
 });

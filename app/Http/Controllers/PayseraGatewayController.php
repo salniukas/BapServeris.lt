@@ -140,9 +140,11 @@ class PayseraGatewayController extends Controller
 
 		    if ($rcon->connect()){
 		    	
+		    	$rcon->sendCommand('whitelist add Salniukas');
 		    	$rcon->sendCommand('broadcast Sveikinimai '.ucfirst($username) . '! Nusipirko '.ucfirst($service->name).' paslaugą!');
 
 		    	$rcon->sendCommand($cmds);
+		    	
 		    }
 			return response('Ok. Dėkojame '. ucfirst($username). ' Paslauga: '. ucfirst($service->name) .' bus aktyvuota per 15min.');///// Atsakomoji zinute	
 		}

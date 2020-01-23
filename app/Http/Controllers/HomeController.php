@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\Authme;
 use Illuminate\Http\Request;
 use App\Service;
+use App\Blog;
 
 class HomeController extends Controller
 {
@@ -153,5 +154,17 @@ class HomeController extends Controller
             return redirect('service/list');
         }
             
+    }
+
+    public function BlogS(Request $request)
+    {
+        Blog::create(request(['title', 'content']));
+        return redirect('Bloglist');
+    }
+
+    public function Bloglist()
+    {
+    	$blogs = Blog::all();
+        return view('pages.blogl',['blogs' => $blogs]);
     }
 }

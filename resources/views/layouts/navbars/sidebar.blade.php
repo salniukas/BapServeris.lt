@@ -65,8 +65,32 @@
             </li>
           </ul>
         </div>
-        @endif
+        
       </li>
+      <li class="nav-item {{ ($activePage == 'Pranesimai' || $activePage == 'VPranesimai') ? ' active' : '' }}">
+        <a class="nav-link" data-toggle="collapse" href="#laravell" aria-expanded="true">
+          <i class="material-icons">forum</i>
+          <p>{{ __('Pranešimai') }}
+            <b class="caret"></b>
+          </p>
+        </a>
+        <div class="collapse show" id="laravell">
+          <ul class="nav">
+            <li class="nav-item{{ $activePage == 'Ablog' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('blog-list') }}">
+                <span class="sidebar-normal">{{ __('Pranešimai') }} </span>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'Wblog' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('blog-create') }}">
+                <span class="sidebar-mini"></span>
+                <span class="sidebar-normal"> {{ __('Rašyti Pranešimą') }} </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      @endif
       <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('icons') }}">
           <i class="material-icons">bubble_chart</i>

@@ -135,7 +135,7 @@
         <div class="col-lg-6 col-md-12 float-left">
           <div class="card">
             <div class="card-header card-header-info">
-              <h4 class="card-title">Mano Prenumeratos</h4>
+              <h4 class="card-title">Mano Paslaugos</h4>
             </div>
             <div class="card-body table-responsive">
               <table class="table table-hover">

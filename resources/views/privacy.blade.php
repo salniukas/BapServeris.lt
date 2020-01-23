@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['activePage' => 'dashboard', 'titlePage' => __('Privatumo Politika')])
 
 @section('content')
 <div class="wrapper nav">
@@ -6,19 +6,19 @@
       <div class="inner">
         <h3>Privatumo Politika</h3>
         <h4>Gerbiame ir saugome kiekvieno svetainės lankytojo privatumą ir įsipareigojame sąžiningai bei teisėtai tvarkyti ir prižiūrėti jūsų pateiktus duomenis. 
-Mes renkame informaciją apie svetainės lankytojus, kurie registruojasi į nuotykiužemė.lt sistemą.</h4>
+Mes renkame informaciją apie svetainės lankytojus, kurie registruojasi į bapserveris.lt sistemą.</h4>
         <div class="about-us">
           <div>
             <div class="text">
               <div class="title">Registracija</div><br/>
-              Registruojantis gali būti renkami šie duomenys: vardas ir pavardė; el. pašto adresas; kalba (šalis);Trečiujų šalių programelių suteikiama informacija; aktualios praktikos sritys. Registruodamiesi duodate sutikimą nuotykiužemė.lt rinkti ir tvarkyti Jūsų pateiktus asmens duomenis, kad Tryskubai.lt galėtų tinkamai suteikti siūlomas paslaugas. 
+              Registruojantis gali būti renkami šie duomenys: vardas ir pavardė; el. pašto adresas; kalba (šalis);Trečiujų šalių programelių suteikiama informacija; aktualios praktikos sritys. Registruodamiesi duodate sutikimą bapserveris.lt rinkti ir tvarkyti Jūsų pateiktus asmens duomenis, kad bapserveris.lt galėtų tinkamai suteikti siūlomas paslaugas. 
 
             </div>
           </div>
           <div>
-            <div class="text">
+            <div class="text"><br>
               <div class="title">Naudojimas ir naujienlaiškiai</div><br/>
-              Surenkami duomenys naudojami tik prisijungimui prie sistemos, galimybei susisiekti su vartotoju,Mokejimų atlikimai, jei iškiltų kokių problemų, naujienlaiškių siuntimui (naujienlaiškių siuntimui klientas pateikia atskirą sutikimą). Jūsų pateikti asmeniniai duomenys jokiomis aplinkybėmis nebus teikiami trečiosioms šalims, išskyrus įstatymų numatytus atvejus. Savo sutikimą nuotykiužemė.lt rinkti ir tvarkyti Jūsų pateiktus asmens duomenis galite bet kada atšaukti išsiųsdami laišką elektroninio pašto adresu lukas@tryskubai.lt. Jūsų asmens duomenis saugosime tik tiek laiko, kiek naudositės mūsų paslaugomis. 
+              Surenkami duomenys naudojami tik prisijungimui prie sistemos, galimybei susisiekti su vartotoju,Mokejimų atlikimai, jei iškiltų kokių problemų, naujienlaiškių siuntimui (naujienlaiškių siuntimui klientas pateikia atskirą sutikimą). Jūsų pateikti asmeniniai duomenys jokiomis aplinkybėmis nebus teikiami trečiosioms šalims, išskyrus įstatymų numatytus atvejus. Savo sutikimą bapserveris.lt rinkti ir tvarkyti Jūsų pateiktus asmens duomenis galite bet kada atšaukti išsiųsdami laišką elektroninio pašto adresu baporganizacija@gmail.lt. Jūsų asmens duomenis saugosime tik tiek laiko, kiek naudositės mūsų paslaugomis. 
             </div>
           </div>
           <div>
@@ -46,4 +46,5 @@ Mes renkame informaciją apie svetainės lankytojus, kurie registruojasi į nuot
         <h4>Šios nuostatos gali būti keičiamos be atskiro pranešimo, nes laikomės slapukų naudojimą reglamentuojančių teisės aktų ir atsižvelgiame į visuotinai priimtą su slapukų naudojimu susijusią praktiką. Šioms privatumo politikos nuostatoms taikoma Lietuvos Respublikos teisė. Visi dėl šių privatumo nuostatų kilę ginčai bus sprendžiami derybomis, o joms nepavykus - Lietuvos Respublikos teismuose.</h5>
       </div>
     </section>
+  </div>
 @endsection
