@@ -12,7 +12,7 @@
             <div class="card ">
               <div class="card-header card-header-primary">
                 <h4 class="card-title">{{ __('Paslaugos') }}</h4>
-                <p class="card-category">Čia galite įsigyti serverio paslaugas per Paysera platfomą</p>
+                <p class="card-category">Paslaugos Dovanojimas</p>
               </div>
               <div class="card-body ">
                 @if (session('status'))
@@ -28,14 +28,11 @@
                   </div>
                 @endif
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Jūsų vartotojo Vardas:') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Žaidėjui:') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group">
-                      @if(!Auth::user()->minecraft)
-                        <input class="form-control" name="username" id="username" type="text" value="" required/>
-                      @else
-                        <input class="form-control" name="username" id="username" type="text" value="{{Auth::user()->minecraft}}" required/>
-                      @endif
+                        {{$victim->username}}
+                        <input class="form-control" name="username" id="username" type="text" value="{{ $victim->username }}" hidden/>
                     </div>
                   </div>
                 </div>
@@ -52,7 +49,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Paslaugos Pavadinimas:') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __('Paslauga:') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group">
                       <select class="form-control" id="amount" name="amount">
@@ -61,25 +58,28 @@
                           <option value="{{$service->cost}}">
                             @if($service->name === 'atleiskit')
                             {{$service->name}} (UNBAN {{$service->cost /100}} €)
-                            @elseif($service->name === 'Legendary')
-                            {{$service->name}} (3 Raktai {{$service->cost /100}} €)
-                            @elseif($service->name === 'Spawner')
-                            {{$service->name}} (3 Raktai {{$service->cost /100}} €)
                             @else
                             {{$service->name}} ({{$service->cost /100}} €)
                             @endif
                           </option>
-
                         @endforeach
                       </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Dovanoja') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group">
+                        <input class="form-control" name="giftedby" id="giftedby" type="text" value="{{ $gifter }}" required/>
+                        <input class="form-control" name="gift" id="gift" type="text" value="1" hidden/>
                     </div>
                   </div>
                 </div>
                 <div class="card-footer ml-auto mr-auto d-flex justify-content-center">
                   <button type="submit"  class="btn btn-primary ">{{ __('Apmokėti') }}</button>
                 </div>
-                Tęsdami apmokėjimą sutinkate su pirkimo <a href="http://bapserveris.lt/private">sąlygomis</a>
-
+              </div>
             </div>
           </form>
         </div>

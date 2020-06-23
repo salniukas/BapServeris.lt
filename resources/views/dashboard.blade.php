@@ -146,7 +146,6 @@
                   <th>Kaina</th>
                   <th>Liko Laiko</th>
                   <th>Veiksmai</th>
-                  </th>
                 </thead>
                 <tbody>
                 @foreach ($orders as $order)
@@ -162,18 +161,6 @@
                       {{ Carbon\Carbon::parse(now())->diffInDays($order->until, false) }} d.
                       @endif
                     </td>
-                    <td>
-                      @if (Carbon\Carbon::parse($order->until)->diffInDays(null, false) > 0)
-                      
-                      @elseif(!Auth::user()->isAdded && Auth::user()->isDonator)
-                      <a rel="tooltip" class="btn btn-success btn-link" href="http://nuotykiuzeme.lt/zaidejai/add" data-original-title="" title="">
-                                <i class="material-icons">contactless</i>
-                                <div class="ripple-container"></div>
-                              </a>
-                      @else
-                      Paskyra Užregistruota
-                      @endif
-                    </td>
                   </tr>
                 @endforeach
                 </tbody>
@@ -181,6 +168,45 @@
             </div>
           </div>
         </div>
+@if(Auth::user()->isAdmin || Auth::user()->isSupport)
+        <div class="col-lg-6 col-md-12 float-right">
+          <div class="card">
+            <div class="card-header card-header-info">
+              <h4 class="card-title">Aktyvios žaidėjų Paslaugos (10 Naujausių)</h4>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="table table-hover">
+                <thead class="text-warning">
+                  <th>NR.</th>
+                  <th>Pirkta</th>
+                  <th>Vartotojas</th>
+                  <th>Kaina</th>
+                  <th>Liko Laiko</th>
+                  <th>Veiksmai</th>
+                </thead>
+                <tbody>
+                @foreach ($aorders as $aorder)
+                  <tr>
+                    <td>{{ $aorder->id }}</td>
+                    <td>{{ $aorder->created_at }}</td>
+                    <td>{{ $aorder->username }}</td>
+                    <td>{{ $aorder->amount/100 }}€</td>
+                    <td>
+                      @if (Carbon\Carbon::parse($aorder->until)->diffInDays(null, false) > 0)
+                      Galiojimas baigėsi
+                      @else
+                      {{ Carbon\Carbon::parse(now())->diffInDays($aorder->until, false) }} d.
+                      @endif
+                    </td>
+                    <td><a href="/atimti/{{$aorder->id}}"><span class="material-icons">clear</span></a></td>
+                  </tr>
+                @endforeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+@endif
       </div>
     </div>
   </div>

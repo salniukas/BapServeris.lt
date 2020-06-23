@@ -44,8 +44,6 @@ class HomeController extends Controller
             $startu = $en->startOfWeek()->getPreciseTimestamp(3);
             $endu = $en->endOfWeek()->getPreciseTimestamp(3);
 
-
-        	// $playw = Authme::where(DB::raw('UNIX_TIMESTAMP(regdate)'),'>=', $startu)->get();
         	
             $playw = Authme::where('regdate', '>', $startu)->where('regdate', '<', $endu)->get();
             $playwc = $playw->count();
@@ -55,8 +53,16 @@ class HomeController extends Controller
             $minecraft = $user->minecraft;
 
             $orders = Order::orderBy('created_at', 'desc')->where('Approved', 'done')->where('username', Auth::user()->minecraft)->get();
+            $aorders = Order::orderBy('until', 'asc')->where('Approved', 'done')->where('until', '!=', null )->where('service_name', '!=', 'Legendary')->where('service_name', '!=', 'Spawner')->where('service_name', '!=', 'atleiskit')->take(10)->get();
 
-            return view('dashboard', ['amount' => $amount,'play' => $play, 'playw' => $playw, 'playwc' => $playwc,'orders' => $orders, 'minecraft' => $minecraft]);
+            return view('dashboard', [
+                    'amount' => $amount,
+                    'play' => $play, 
+                    'playw' => $playw, 
+                    'playwc' => $playwc,
+                    'orders' => $orders, 
+                    'minecraft' => $minecraft, 
+                    'aorders' => $aorders]);
         
     }
 
@@ -166,5 +172,31 @@ class HomeController extends Controller
     {
     	$blogs = Blog::all();
         return view('pages.blogl',['blogs' => $blogs]);
+    }
+
+    public function BlogEdit($id)
+    {
+        $blog = Blog::find($id);
+        return view('pages.bloge',['blog' => $blog]);
+    }
+
+    public function BlogU(Request $request)
+    {
+
+        $blog = Blog::find($request->id);
+
+        $blog->title = $request->title;
+        $blog->content = $request->content;
+        $blog->save();
+
+        return redirect('Bloglist');
+    }
+    public function BlogD($id)
+    {
+        $blog = Blog::find($id);
+
+        $blog->delete();
+
+        return redirect('Bloglist');
     }
 }

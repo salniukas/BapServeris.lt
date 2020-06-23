@@ -46,5 +46,52 @@ Mes renkame informaciją apie svetainės lankytojus, kurie registruojasi į baps
         <h4>Šios nuostatos gali būti keičiamos be atskiro pranešimo, nes laikomės slapukų naudojimą reglamentuojančių teisės aktų ir atsižvelgiame į visuotinai priimtą su slapukų naudojimu susijusią praktiką. Šioms privatumo politikos nuostatoms taikoma Lietuvos Respublikos teisė. Visi dėl šių privatumo nuostatų kilę ginčai bus sprendžiami derybomis, o joms nepavykus - Lietuvos Respublikos teismuose.</h5>
       </div>
     </section>
+    <section name="about-us" class="container">
+      <div class="inner">
+        <h3>BAP POLITIKA</h3>
+        <div class="about-us">
+          <div>
+            <div class="text">
+              <div class="title">Serveris</div><br/><br>
+              <ul>
+                <li>Serverio administracija neatsako už prarastus daiktus serveryje.</li>
+                <li>Administracija turi teisę nepateikti informacijos žaidėjui ar nurodyti priežastį kodėl asmuo buvo nubaustas</li>
+                <li>Administracija turi teisę bausti įtarų asmenį be įspėjimų.</li>
+                <li>Taisyklių nežinojimas neatleidžia nuo atsakomybės.</li>
+                <li>Asmuo, žaisdamas serveryje, sutinka su serverio taisyklėmis, įsipareigoja laikytis bei supranta, kad pažeisdamas taisykles, asmeniui bus atimtos teisės žaisti serveryje.</li>
+                <li>Jei taisyklės nėra, administracija sprendžia atvejį bei baudžia atitinkamai.</li>
+                <li>Serverio administracija pasilieka teisę keisti taisykles.</li>
+                <li>Jei asmuo nespėja į patikrinimą, serverio administracija turi teisę bausti asmenį be pakeitimų.</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="text"><br>
+              <div class="title">Paslaugos</div><br/>
+              <ul>
+                <li>Pinigų grąžinimo garantija yra 24 valandos nuo paslaugos įsigijimo.</li>
+                <li>Pinigai negrąžinami asmeniui, gavusiam Ban, tempBan, IP-Ban.</li>
+                <li>Asmuo, įsigijęs paslaugą sutinka su paslaugų taisyklėmis ir sąlygomis, įsipareigoja laikytis bei supranta, kad pažeisdamas taisykles gali prarasti paslaugą.</li>
+                <li>Serverio administracija neatsako už pinigus, kurie būna sumokėti, tačiau nepasiekia BAP! Pirkimų sistemos.</li>
+                <li>Serverio administracija atsako už pinigus, kurie būna sumokėti ir pasiekia BAP! Pirkimų sistemą.</li>
+                <li>Paslaugos, gautos event'ų, giveaway'ų, akcijų, kampanijų metu nėra pratęsiamos, jei serveris turi būti pertvarkomas.</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+          </div>
+          <div>
+            <div class="text">
+              <div class="title">Discord</div><br/>
+              <ul>
+                <li>Asmuo, esantis Discord’e, sutinka su Discord taisyklėmis, įsipareigoja laikytis bei supranta, kad pažeisdamas taisykles, gali būti nubaustas.</li>
+                <li>Discord Administracija turi teisę bausti asmenis be įspėjimų.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <h4>Serverio Administracija gali keisti serverio politiką.</h5>
+      </div>
+    </section>
   </div>
 @endsection

@@ -8,6 +8,7 @@ use App\Order;
 use Carbon\Carbon;
 use Thedudeguy\Rcon;
 use App\Service;
+use Illuminate\Support\Facades\Log;
 
 
 class Kernel extends ConsoleKernel
@@ -38,26 +39,39 @@ class Kernel extends ConsoleKernel
         })->daily();
 
         $schedule->call(function(){
-            $en = Carbon::now()->locale('lt');
-            $start = $en->today()->format('Y-m-d H:i');
-
-            $orders = order::where('until', $start)->get();
+            $orders = Order::whereNotNull('until')->get();
             foreach ($orders as $order) {
-                $service = Service::where('cost', $order->amount)->get();
+                $service = Service::where('cost', $order->amount)->first();
                 $username = $order->username;
-                
-                $host = env('Server_IP');
-                $port = env('Server_PORT');
-                $password = env('Server_PASS');
-                $timeout = 3;
-                $rcon = new Rcon($host, $port, $password, $timeout);
+                if (Carbon::parse(now())->diffInDays($order->until, false) <= 0) {
+                	if (is_null($order->until)) {
+						$until = "NULL";
+					}else{
+						$until = $order->until;
+						$order->until = null;
+						$order->save();
+						Log::debug('Neteko Paslaugos: ' . $username . '---'. $service->name);
+					}
 
-                if ($rcon->connect()){
+					$host = env('Server_IP');
+	                $port = env('Server_PORT');
+	                $password = env('Server_PASS');
+	                $timeout = 3;
+	                $rcon = new Rcon($host, $port, $password, $timeout);
 
-                    $rcon->sendCommand('pex user'.$username. 'group remove'. $service->name);
-                }
-            }
-        })->daily();
+	                if ($rcon->connect()){
+
+                    	$rcon->sendCommand('pex user '.$username. 'group set lavonas'); 
+                    	$rcon->sendCommand('broadcast '.$username. ' Neteko paslaugos, nes jos galiojimas pasibaigė');
+                    	
+                	}
+				}
+			}})->daily();
+
+        $schedule->call(function(){
+            $orders = Order::where('approved', 'done')->whereNull('until')->where('service_name', '!=', 'atleiskit')->delete();
+            $orders2 = Order::where('approved', 'cancelled')->delete();
+        })->weeklyOn(1, '7:00');;
 
     }
 

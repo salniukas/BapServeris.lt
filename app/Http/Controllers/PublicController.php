@@ -9,7 +9,7 @@ class PublicController extends Controller
 {
     public function index()
     {
-    	$blogs = Blog::all()->take(3);
+    	$blogs = Blog::orderBy('id', 'DESC')->get()->take(3);
     	return view('pag',['blogs' => $blogs]);
     }
 }

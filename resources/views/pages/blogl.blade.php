@@ -56,16 +56,16 @@
                           <td>
                             {{ $blog->content }}
                           </td>
-{{--                           <td class="td-actions">
-                              <a rel="tooltip" class="btn btn-success btn-link" href="/service/delete/{{ $service->id }}" data-original-title="" title="">
+                          <td class="td-actions">
+                              <a rel="tooltip" class="btn btn-success btn-link" href="/blog/delete/{{ $blog->id }}" data-original-title="" title="">
                                 <i class="material-icons">delete_forever</i>
                                 <div class="ripple-container"></div>
                               </a>
-                              <a rel="tooltip" class="btn btn-success btn-link" href="/service/edit/{{ $service->id }}" data-original-title="" title="">
+                              <a rel="tooltip" class="btn btn-success btn-link" href="Blogedit/{{ $blog->id }}" data-original-title="" title="">
                                 <i class="material-icons">edit</i>
                                 <div class="ripple-container"></div>
                               </a>
-                          </td> --}}
+                          </td>
                         </tr>
                       @endforeach
 

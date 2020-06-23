@@ -40,7 +40,8 @@
                     </td>
                     @endif
                     <td>
-                      Dovanoti Paslaugą(kuriama)
+                      
+                      <a href="../gift/{{ $player->id }}">Dovanoti Paslaugą</a>
                     </td>
                   </tr>
                   @endforeach

@@ -5,6 +5,9 @@ Route::get('/oauth/discord', 'Auth\LoginController@redirectToProvider')->name('a
 Route::get('/oauth/discord/callback', 'Auth\LoginController@handleProviderCallback')->name('auth.discord.callback');
 
 Route::get('/', 'PublicController@index')->name('index');
+Route::get('/grazinkitpaslaugasprasau', 'PayseraGatewayController@grazinti');
+Route::get('/atimkitpaslaugasprasau', 'PayseraGatewayController@atimti');
+Route::get('/nepilnamete', 'PayseraGatewayController@pratesti');
 
 Route::get('/private', function () {
     return view('privacy');
@@ -16,6 +19,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('home', 'HomeController@index')->name('home');
 
 	Route::get('parama', 'PayseraGatewayController@Start')->name('icons');
+	Route::get('/gift/{id}', 'PayseraGatewayController@gift')->name('gift');
 
 	Route::post('/home/store', 'HomeController@finish')->name('homeReg');
 
@@ -30,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('service/delete/{id}', 'HomeController@paslaugosD')->name('service-delete');
 	Route::get('service/edit/{id}', 'HomeController@paslaugosE')->name('service-edit');
 	Route::post('service/edit/update', 'HomeController@paslaugosES')->name('service-update');
+	Route::get('/atimti/{id}', 'PayseraGatewayController@Admin_Atimti');
 
 	
 	Route::get('blog/create', function(){
@@ -37,6 +42,9 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('blog-create');
 	Route::post('blog/save', 'HomeController@BlogS')->name('blog-store');
 	Route::get('/Bloglist', 'HomeController@Bloglist')->name('blog-list');
+	Route::get('/Blogedit/{id}', 'HomeController@BlogEdit')->name('blog-edit');
+	Route::post('blog/update', 'HomeController@BlogU')->name('blog-update');
+	Route::get('blog/delete/{id}', 'HomeController@BlogD')->name('blog-delete');
 
 });
 

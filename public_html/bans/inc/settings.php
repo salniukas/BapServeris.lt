@@ -14,10 +14,10 @@ final class Settings {
         $database = 'u166743112_bap';
 
         $username = 'u166743112_bap';
-        $password = 'jI3AdfArsS';
+        $password = 'XmN920twbme4';
 
         // If you set a table prefix in config.yml, set it here as well
-        $this->table_prefix = "";
+        $this->table_prefix = "litebans_";
 
         // Supported drivers: mysql, pgsql
         $driver = 'mysql';
